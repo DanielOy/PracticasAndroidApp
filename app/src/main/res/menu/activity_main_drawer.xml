@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_action_home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_foros"
+            android:icon="@drawable/ic_action_foros"
+            android:title="Foros" />
+        <item
+            android:id="@+id/nav_circulos"
+            android:icon="@drawable/ic_action_circles"
+            android:title="Circulos" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Configuraciones" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_projects"
+                android:icon="@drawable/ic_action_code"
+                android:title="Proyectos" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Pendiente" />
+        </menu>
+    </item>
+
+</menu>
