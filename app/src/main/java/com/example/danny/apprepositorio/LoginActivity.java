@@ -17,4 +17,8 @@ public class LoginActivity extends AppCompatActivity {
         Intent i = new Intent(getApplicationContext(),RegistroActivity.class);
         startActivity(i);
     }
+    public void Entrar (View view){
+        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(i);
+    }
 }

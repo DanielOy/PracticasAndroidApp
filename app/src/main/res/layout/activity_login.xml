@@ -59,6 +59,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:background="@color/botonColor"
+            android:elevation="0dp"
+            android:onClick="Entrar"
             android:text="Iniciar Sesion" />
 
         <LinearLayout

@@ -133,7 +133,7 @@
                 android:textSize="18sp" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btnCancelar"
                 android:layout_width="match_parent"
                 android:layout_height="63dp"
                 android:text="Cancelar"
