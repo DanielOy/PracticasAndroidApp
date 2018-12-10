@@ -91,6 +91,8 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_projects) {
+            Intent mapa = new Intent(getApplicationContext(),MapsActivity.class);
+            startActivity(mapa);
 
         } else if (id == R.id.nav_send) {
 
