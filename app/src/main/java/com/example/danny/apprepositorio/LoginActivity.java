@@ -13,8 +13,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         //comentario
     }
-    public void iniciar(View view){
-        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+    public void Registarse (View view){
+        Intent i = new Intent(getApplicationContext(),RegistroActivity.class);
         startActivity(i);
     }
 }

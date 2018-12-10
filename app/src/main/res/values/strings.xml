@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">appRepositorio</string>
+    <string-array name="semestres">
+        <item>Primer semestre</item>
+        <item>Segundo semestre</item>
+        <item>Tercer semestre</item>
+        <item>Cuarto semestre</item>
+        <item>Quinto semestre</item>
+        <item>Sexto semestre</item>
+        <item>Septimo semestre</item>
+        <item>Octavo semestre</item>
+        <item>Noveno semestre</item>
+    </string-array>
 </resources>
