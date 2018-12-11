@@ -39,6 +39,8 @@
                 android:id="@+id/edtMatricula"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_action_code"
+                android:drawablePadding="20dp"
                 android:ems="10"
                 android:inputType="numberSigned" />
 
@@ -56,6 +58,8 @@
                 android:id="@+id/edtCorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@android:drawable/sym_action_email"
+                android:drawablePadding="20dp"
                 android:ems="10"
                 android:inputType="textEmailAddress" />
 
@@ -73,6 +77,8 @@
                 android:id="@+id/edtContrasenia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_action_key"
+                android:drawablePadding="20dp"
                 android:ems="10"
                 android:inputType="textPassword" />
 
@@ -90,6 +96,8 @@
                 android:id="@+id/edtUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_action_user"
+                android:drawablePadding="20dp"
                 android:ems="10"
                 android:inputType="textPersonName" />
 

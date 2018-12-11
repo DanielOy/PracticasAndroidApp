@@ -38,6 +38,8 @@
             android:layout_margin="10dp"
             android:layout_weight="0"
             android:background="@color/fondoText"
+            android:drawableLeft="@drawable/ic_action_user"
+            android:drawablePadding="20dp"
             android:ems="10"
             android:inputType="textEmailAddress"
             android:padding="10dp" />
@@ -49,6 +51,8 @@
             android:layout_margin="10dp"
             android:layout_weight="0"
             android:background="@color/fondoText"
+            android:drawableLeft="@drawable/ic_action_key"
+            android:drawablePadding="20dp"
             android:ems="10"
             android:inputType="textPassword"
             android:padding="10dp" />

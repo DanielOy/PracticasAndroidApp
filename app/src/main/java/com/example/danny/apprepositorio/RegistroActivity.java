@@ -40,7 +40,10 @@ public class RegistroActivity extends AppCompatActivity {
     }
     public void onClickInsertar(View v){
         try{
-        registrarUsuario();}catch (Exception ex){
+        registrarUsuario();
+            Toast.makeText(this, "Usuario agregado", Toast.LENGTH_SHORT).show();
+        Cancelar(v);
+        }catch (Exception ex){
             Toast.makeText(this, "Error: " +ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }

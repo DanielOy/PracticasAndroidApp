@@ -15,6 +15,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         //EJECUTAMOS LA CONSUTLA AL CREAR LA BASE DE DATOS DE FORMA AUTOMATICA
         //EL METODO ONCREATE
         db.execSQL(Utilidades.CREAR_TABLA_USUARIOS);
+
     }
 
     @Override
