@@ -89,7 +89,8 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_circulos) {
 
         } else if (id == R.id.nav_manage) {
-
+            Intent config = new Intent(getApplicationContext(),SettingsActivity.class);
+            startActivity(config);
         } else if (id == R.id.nav_projects) {
             Intent mapa = new Intent(getApplicationContext(),MapsActivity.class);
             startActivity(mapa);
