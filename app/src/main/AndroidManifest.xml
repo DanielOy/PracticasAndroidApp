@@ -15,7 +15,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo1"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -53,7 +53,8 @@
             android:label="@string/title_activity_settings" />
         <activity android:name=".MensajesActivity" />
         <activity android:name=".UploadActivity" />
-        <activity android:name=".CirculosActivity"></activity>
+        <activity android:name=".CirculosActivity" />
+        <activity android:name=".ForoActivity"></activity>
     </application>
 
 </manifest>

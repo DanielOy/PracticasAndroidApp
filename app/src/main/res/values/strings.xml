@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">appRepositorio</string>
+    <string name="app_name">For Encoders</string>
     <string-array name="semestres">
         <item>Primer semestre</item>
         <item>Segundo semestre</item>

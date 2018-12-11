@@ -85,6 +85,8 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
         } else if (id == R.id.nav_foros) {
+            Intent foro = new Intent(getApplicationContext(),ForoActivity.class);
+            startActivity(foro);
 
         } else if (id == R.id.nav_circulos) {
 

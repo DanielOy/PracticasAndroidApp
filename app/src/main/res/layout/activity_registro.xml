@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fondoRegistro"
     tools:context=".RegistroActivity">
 
     <ScrollView
@@ -22,8 +23,8 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_height="75dp"
+                android:src="@drawable/logo1" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -31,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
                 android:text="Matricula"
+                android:textColor="@color/textFielRegistro"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:typeface="normal" />
@@ -50,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
                 android:text="Correo Electronico:"
+                android:textColor="@color/textFielRegistro"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:typeface="normal" />
@@ -69,6 +72,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
                 android:text="Contraseña:"
+                android:textColor="@color/textFielRegistro"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:typeface="normal" />
@@ -88,6 +92,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
                 android:text="Nombre de Usuario"
+                android:textColor="@color/textFielRegistro"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:typeface="normal" />
@@ -109,7 +114,8 @@
                 android:text="Semestre"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:typeface="normal" />
+                android:typeface="normal"
+                android:textColor="@color/textFielRegistro" />
 
             <Spinner
                 android:id="@+id/spSemestre"
