@@ -14,7 +14,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:orientation="vertical"
             android:padding="5dp">
@@ -23,8 +23,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"
-                />
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -67,8 +66,8 @@
                 android:fontFamily="monospace"
                 android:text="Contraseña:"
                 android:textSize="16sp"
-                android:typeface="normal"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:typeface="normal" />
 
             <EditText
                 android:id="@+id/edtContrasenia"
@@ -118,6 +117,7 @@
                 android:id="@+id/swCondiciones"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="monospace"
                 android:showText="false"
                 android:text="Aceptar terminos y condiciones"
@@ -126,21 +126,30 @@
                 android:typeface="normal"
                 tools:checked="false" />
 
-            <Button
-                android:id="@+id/btnAceptar"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="66dp"
-                android:text="Aceptar"
-                android:textSize="18sp"
-                android:onClick="onClickInsertar"/>
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btnCancelar"
-                android:layout_width="match_parent"
-                android:layout_height="63dp"
-                android:text="Cancelar"
-                android:textSize="18sp"
-                android:onClick="Cancelar"/>
+                <Button
+                    android:id="@+id/btnAceptar"
+                    android:layout_width="167dp"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_action_ok"
+                    android:onClick="onClickInsertar"
+                    android:text="Aceptar"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btnCancelar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/ic_action_cancel"
+                    android:onClick="Cancelar"
+                    android:text="Cancelar"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 

@@ -21,10 +21,10 @@
         <ImageButton
             android:id="@+id/btnImg"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:layout_marginLeft="60dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="100dp"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="60dp"
+            android:layout_marginRight="80dp"
             android:layout_marginBottom="10dp"
             android:background="@color/trasparente"
             android:onClick="onclick"
@@ -85,7 +85,10 @@
             android:id="@+id/btnEdit"
             android:layout_width="match_parent"
             android:layout_height="61dp"
-            android:layout_margin="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="50dp"
+            android:drawableLeft="@drawable/ic_action_edit"
             android:padding="20dp"
             android:text="Editar Informacion" />
 
