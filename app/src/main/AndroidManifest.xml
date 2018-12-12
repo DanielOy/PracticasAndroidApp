@@ -54,8 +54,13 @@
         <activity android:name=".MensajesActivity" />
         <activity android:name=".UploadActivity" />
         <activity android:name=".CirculosActivity" />
-        <activity android:name=".ForoActivity" />
-        <activity android:name=".AddForoActivity"></activity>
+        <activity android:name=".ForoActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:label="Foros"/>
+        <activity android:name=".AddForoActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:label="Agregar Entrada"
+            ></activity>
     </application>
 
 </manifest>

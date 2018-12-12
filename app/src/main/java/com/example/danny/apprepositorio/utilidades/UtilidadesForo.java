@@ -14,7 +14,7 @@ public class UtilidadesForo
 
     public static final String CREAR_TABLA_FORO = "CREATE TABLE "+
             ""+TABLA_FORO+" ("+CAMPO_ID+" "+
-            " TEXT, "+CAMPO_TITULO+" TEXT, "+CAMPO_LENGUAJE+" TEXT, "+
+            " INTEGER, "+CAMPO_TITULO+" TEXT, "+CAMPO_LENGUAJE+" TEXT, "+
             CAMPO_DESCRIPCION+" TEXT, "+CAMPO_AUTOR+" TEXT, "+
             CAMPO_FECHA+" TEXT)";
 }

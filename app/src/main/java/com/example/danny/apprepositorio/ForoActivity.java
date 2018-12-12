@@ -43,6 +43,7 @@ public class ForoActivity extends AppCompatActivity
         conn = new ConexionSQLiteHelper(getApplicationContext(),"bd_app",null,1);
         listViewForo = (ListView)findViewById(R.id.entradasForo);
 
+        try{
         consultarListaForo();
 
         ArrayAdapter adaptador = new ArrayAdapter(this,android.R.layout.simple_list_item_1,listaInformacion);
@@ -57,7 +58,9 @@ public class ForoActivity extends AppCompatActivity
 
                 Toast.makeText(getApplicationContext(), informacion, Toast.LENGTH_SHORT).show();
             }
-        });
+        });}catch (Exception e){
+            Toast.makeText(this, "Error we", Toast.LENGTH_SHORT).show();
+        }
     }
     private void consultarListaForo() {
         SQLiteDatabase db = conn.getReadableDatabase();
@@ -82,8 +85,8 @@ public class ForoActivity extends AppCompatActivity
     private void obtenerLista() {
         listaInformacion = new ArrayList<String>();
         for (int i=0;i<listaForo.size();i++){
-            listaInformacion.add(listaForo.get(i).getId() +" - "+
-                    listaForo.get(i).getTitulo());
+            listaInformacion.add(listaForo.get(i).getTitulo() +" - "+
+                    listaForo.get(i).getAutor());
         }
     }
 
@@ -105,9 +108,10 @@ public class ForoActivity extends AppCompatActivity
         }
         transaction.commit();
     }
-
     public void onclickAdd(View view) {
         Intent add = new Intent(getApplicationContext(),AddForoActivity.class);
+        //startActivity(add);
         startActivity(add);
+        //finish();
     }
 }
