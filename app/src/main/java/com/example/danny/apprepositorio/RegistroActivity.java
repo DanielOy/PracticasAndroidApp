@@ -57,7 +57,7 @@ public class RegistroActivity extends AppCompatActivity {
 
         SQLiteDatabase db = conn.getWritableDatabase();
         Random r = new Random();
-        int i = r.nextInt();
+        int i = r.nextInt(100);
         ContentValues values = new ContentValues();
         values.put(Utilidades.CAMPO_ID,(i+""));
         values.put(Utilidades.CAMPO_MATRICULA,matricula.getText().toString());
