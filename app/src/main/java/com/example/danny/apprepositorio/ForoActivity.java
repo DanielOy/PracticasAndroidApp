@@ -23,11 +23,6 @@ public class ForoActivity extends AppCompatActivity
         ForoPrincipalFragment.OnFragmentInteractionListener
 {
 
-    ListView listViewForo;
-    ArrayList<String> listaInformacion;
-    ArrayList<Foro> listaForo;
-    ConexionSQLiteHelper conn;
-
     ForoPrincipalFragment fragmentPrincipal;
     ForoAportacionesFragment fragmetAportaciones;
     @Override
@@ -40,55 +35,8 @@ public class ForoActivity extends AppCompatActivity
 
         getSupportFragmentManager().beginTransaction().add(R.id.contenedorrFragment,fragmentPrincipal).commit();
 
-        conn = new ConexionSQLiteHelper(getApplicationContext(),"bd_app",null,1);
-        listViewForo = (ListView)findViewById(R.id.entradasForo);
-
-        try{
-        consultarListaForo();
-
-        ArrayAdapter adaptador = new ArrayAdapter(this,android.R.layout.simple_list_item_1,listaInformacion);
-        listViewForo.setAdapter(adaptador);
-        //Comentario
-        listViewForo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String informacion = "id: "+listaForo.get(position).getId()+"\n";
-                informacion+="Titulo: "+listaForo.get(position).getTitulo()+"\n";
-                informacion+="Autor: "+listaForo.get(position).getAutor();
-
-                Toast.makeText(getApplicationContext(), informacion, Toast.LENGTH_SHORT).show();
-            }
-        });}catch (Exception e){
-            Toast.makeText(this, "Error we", Toast.LENGTH_SHORT).show();
-        }
-    }
-    private void consultarListaForo() {
-        SQLiteDatabase db = conn.getReadableDatabase();
-
-        Foro foro =null;
-        listaForo=new ArrayList<Foro>();
-        //select * from usuarios
-        Cursor cursor = db.rawQuery("SELECT * FROM "+UtilidadesForo.TABLA_FORO,null);
-
-        while (cursor.moveToNext()){
-            foro = new Foro();
-            foro.setId(cursor.getInt(0));
-            foro.setTitulo(cursor.getString(1));
-            foro.setAutor(cursor.getString(2));
-
-            listaForo.add(foro);
-        }
-
-        obtenerLista();
     }
 
-    private void obtenerLista() {
-        listaInformacion = new ArrayList<String>();
-        for (int i=0;i<listaForo.size();i++){
-            listaInformacion.add(listaForo.get(i).getTitulo() +" - "+
-                    listaForo.get(i).getAutor());
-        }
-    }
 
     @Override
     public void onFragmentInteraction(Uri uri) {

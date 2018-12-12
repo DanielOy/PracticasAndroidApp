@@ -1,13 +1,25 @@
 package com.example.danny.apprepositorio;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.danny.apprepositorio.entidades.Foro;
+import com.example.danny.apprepositorio.utilidades.UtilidadesForo;
+
+import java.util.ArrayList;
 
 
 /**
@@ -23,6 +35,11 @@ public class ForoPrincipalFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    ListView listViewForo;
+    ArrayList<String> listaInformacion;
+    ArrayList<Foro> listaForo;
+    ConexionSQLiteHelper conn;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -58,6 +75,57 @@ public class ForoPrincipalFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+        conn = new ConexionSQLiteHelper(getActivity(),"bd_app",null,1);
+        Activity a = getActivity();
+        a.findViewById(R.id.entradaforo);
+        listViewForo = (ListView)getActivity().findViewById(R.id.entradaforo);
+
+        try{
+            consultarListaForo();
+
+            ArrayAdapter adaptador = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1,listaInformacion);
+            listViewForo.setAdapter(adaptador);
+            //Comentario
+            listViewForo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String informacion = "id: "+listaForo.get(position).getId()+"\n";
+                    informacion+="Titulo: "+listaForo.get(position).getTitulo()+"\n";
+                    informacion+="Autor: "+listaForo.get(position).getAutor();
+
+                    Toast.makeText(getActivity(), informacion, Toast.LENGTH_SHORT).show();
+                }
+            });}catch (Exception e){
+            Toast.makeText(getActivity(), "Error we", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void consultarListaForo() {
+        SQLiteDatabase db = conn.getReadableDatabase();
+
+        Foro foro =null;
+        listaForo=new ArrayList<Foro>();
+        //select * from usuarios
+        Cursor cursor = db.rawQuery("SELECT * FROM "+UtilidadesForo.TABLA_FORO,null);
+
+        while (cursor.moveToNext()){
+            foro = new Foro();
+            foro.setId(cursor.getInt(0));
+            foro.setTitulo(cursor.getString(1));
+            foro.setAutor(cursor.getString(2));
+
+            listaForo.add(foro);
+        }
+
+        obtenerLista();
+    }
+
+    private void obtenerLista() {
+        listaInformacion = new ArrayList<String>();
+        for (int i=0;i<listaForo.size();i++){
+            listaInformacion.add(listaForo.get(i).getTitulo() +" - "+
+                    listaForo.get(i).getAutor());
         }
     }
 

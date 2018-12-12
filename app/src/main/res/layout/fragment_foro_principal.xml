@@ -55,7 +55,7 @@
             </LinearLayout>
 
             <ListView
-                android:id="@+id/entradasForo"
+                android:id="@+id/entradaforo"
                 android:layout_width="match_parent"
                 android:layout_height="554dp">
 

@@ -50,7 +50,8 @@
             android:label="@string/title_activity_maps" />
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" />
+            android:label="Configuraciones"
+            android:theme="@style/Theme.AppCompat"/>
         <activity android:name=".MensajesActivity" />
         <activity android:name=".UploadActivity" />
         <activity android:name=".CirculosActivity" />
