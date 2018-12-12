@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
 import com.example.danny.apprepositorio.utilidades.Utilidades;
+import com.example.danny.apprepositorio.utilidades.UtilidadesCirculos;
 
 public class ConexionSQLiteHelper extends SQLiteOpenHelper {
 
@@ -15,13 +16,15 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         //EJECUTAMOS LA CONSUTLA AL CREAR LA BASE DE DATOS DE FORMA AUTOMATICA
         //EL METODO ONCREATE
         db.execSQL(Utilidades.CREAR_TABLA_USUARIOS);
-
+        db.execSQL(UtilidadesCirculos.CREAR_TABLA_CIRCULOS);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //si existe la base de datos, la borramos
+
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.TABLA_USUARIOS);
+        db.execSQL("DROP TABLE IF EXISTS "+UtilidadesCirculos.TABLA_CIRCULOS);
         onCreate(db);
     }
 
