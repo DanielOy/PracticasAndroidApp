@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void consultar(){
         try {
-            if((user.getText().toString.length()>0)&&pass.getText().toString().length()>0)
+            if((user.getText().toString().length()>0)&&pass.getText().toString().length()>0)
             {
                 SQLiteDatabase db = conn.getReadableDatabase();
                 String[] parametros = {user.getText().toString(),pass.getText().toString()};
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 cursor.moveToFirst();
                 x=cursor.getString(0);
                 y=cursor.getString(1);
-
+                cursor.close();
                 if (x.equals(user.getText().toString())&&y.equals(pass.getText().toString()))
                 {
                     //Abrimos la ventana
@@ -57,8 +57,6 @@ public class LoginActivity extends AppCompatActivity {
             {
                 Toast.makeText(this, "Favor de llenar los campos requeridos.", Toast.LENGTH_SHORT).show();
             }
-            cursor.close();
-            finish();
         }catch (Exception e)
         {
             Toast.makeText(this, "El usuario no existe.", Toast.LENGTH_SHORT).show();

@@ -1,6 +1,6 @@
 package com.example.danny.apprepositorio.entidades;
 
-public class Circulos {
+public class Aportaciones {
 
     private Integer id;
     private String usuario;
