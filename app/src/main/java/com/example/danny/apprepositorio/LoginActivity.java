@@ -20,13 +20,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         conn = new ConexionSQLiteHelper(getApplicationContext(),"bd_app",null,1);
-        Toast.makeText(this, "Base de datos creada", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Base de datos creada", Toast.LENGTH_SHORT).show();
         user = (EditText)findViewById(R.id.edtUser);
         pass = (EditText)findViewById(R.id.edtPass);
     }
     public void Registarse (View view){
         Intent i = new Intent(getApplicationContext(),RegistroActivity.class);
         startActivity(i);
+        finish();
     }
     public void Entrar (View view){
         consultar();
@@ -34,23 +35,28 @@ public class LoginActivity extends AppCompatActivity {
 
     public void consultar(){
         try {
-        SQLiteDatabase db = conn.getReadableDatabase();
-        String[] parametros = {user.getText().toString(),pass.getText().toString()};
-        String[] campos = {Utilidades.CAMPO_NOMBRE,Utilidades.CAMPO_CONTRASENIA};
-
-            String x, y;
-            Cursor cursor = db.query(Utilidades.TABLA_USUARIOS, campos, Utilidades.CAMPO_NOMBRE + "=? AND " + Utilidades.CAMPO_CONTRASENIA+"=?", parametros, null, null, null);
-            cursor.moveToFirst();
-            x=cursor.getString(0);
-            y=cursor.getString(1);
-
-            if (x.equals(user.getText().toString())&&y.equals(pass.getText().toString()))
+            if((user.getText().toString.length()>0)&&pass.getText().toString().length()>0)
             {
-                //Abrimos la ventana
-                Intent i = new Intent(getApplicationContext(),HomeActivity.class);
-                startActivity(i);
-            }
+                SQLiteDatabase db = conn.getReadableDatabase();
+                String[] parametros = {user.getText().toString(),pass.getText().toString()};
+                String[] campos = {Utilidades.CAMPO_NOMBRE,Utilidades.CAMPO_CONTRASENIA};
+                String x, y;
+                Cursor cursor = db.query(Utilidades.TABLA_USUARIOS, campos, Utilidades.CAMPO_NOMBRE + "=? AND " + Utilidades.CAMPO_CONTRASENIA+"=?", parametros, null, null, null);
+                cursor.moveToFirst();
+                x=cursor.getString(0);
+                y=cursor.getString(1);
 
+                if (x.equals(user.getText().toString())&&y.equals(pass.getText().toString()))
+                {
+                    //Abrimos la ventana
+                    Intent i = new Intent(getApplicationContext(),HomeActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+            }else
+            {
+                Toast.makeText(this, "Favor de llenar los campos requeridos.", Toast.LENGTH_SHORT).show();
+            }
             cursor.close();
         }catch (Exception e)
         {
