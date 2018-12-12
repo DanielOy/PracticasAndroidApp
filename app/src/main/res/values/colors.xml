@@ -6,6 +6,8 @@
     <color name="fondoText">#290d62eb</color>
     <color name="botonColor">#f6038c3e</color>
     <color name="trasparente">#00ffffff</color>
-    <color name="fondoRegistro">#37474F</color>
-    <color name="textFielRegistro">#E0E0E0</color>
+    <color name="fondoRegistro">#37474f</color>
+    <color name="textFielRegistro">#e0e0e0</color>
+    <color name="botones">#90CAF9</color>
+    <color name="botones2">#9e3982d3</color>
 </resources>

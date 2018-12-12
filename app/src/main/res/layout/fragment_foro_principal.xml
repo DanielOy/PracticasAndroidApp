@@ -1,15 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo"
+    android:background="@color/fondoRegistro"
     tools:context=".ForoPrincipalFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:drawableStart="@drawable/ic_action_upload"
+                    android:onClick="onclickAdd"
+                    />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="269dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="monospace"
+                    android:text="Principal"
+                    android:textAlignment="center"
+                    android:textColor="@color/textFielRegistro"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/entradasForo"
+                android:layout_width="match_parent"
+                android:layout_height="546dp">
+
+            </ListView>
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

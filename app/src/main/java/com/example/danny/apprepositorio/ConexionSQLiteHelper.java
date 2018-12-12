@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 
 import com.example.danny.apprepositorio.utilidades.Utilidades;
 import com.example.danny.apprepositorio.utilidades.UtilidadesCirculos;
+import com.example.danny.apprepositorio.utilidades.UtilidadesForo;
 
 public class ConexionSQLiteHelper extends SQLiteOpenHelper {
 
@@ -17,6 +18,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         //EL METODO ONCREATE
         db.execSQL(Utilidades.CREAR_TABLA_USUARIOS);
         db.execSQL(UtilidadesCirculos.CREAR_TABLA_CIRCULOS);
+        db.execSQL(UtilidadesForo.CREAR_TABLA_FORO);
     }
 
     @Override
@@ -25,6 +27,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
 
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.TABLA_USUARIOS);
         db.execSQL("DROP TABLE IF EXISTS "+UtilidadesCirculos.TABLA_CIRCULOS);
+        db.execSQL("DROP TABLE IF EXISTS "+UtilidadesForo.TABLA_FORO);
         onCreate(db);
     }
 
