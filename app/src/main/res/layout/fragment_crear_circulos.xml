@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    tools:context=".CrearCirculosFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:id="@+id/linea"
+        android:layout_width="match_parent"
+        android:layout_height="599dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="152dp"
+            android:src="@drawable/crear_circulos" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="Crea un nuevo circulo de interes"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:typeface="monospace" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="122dp"
+                android:layout_height="90dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:fontFamily="monospace"
+                    android:paddingTop="13dp"
+                    android:text="Nombre:"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:fontFamily="monospace"
+                    android:paddingTop="13dp"
+                    android:text="Categoria:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/nombreCirculo"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:hint="Ingresa el nombre del circulo"
+                    android:inputType="textPersonName" />
+
+                <EditText
+                    android:id="@+id/categoriaCirculo"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:hint="Ingresa la categoria"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripcion"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/descripcionCirculo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnAceptarCirculos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Aceptar" />
+
+            <Button
+                android:id="@+id/btnCancelarCirculos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cancelar" />
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

@@ -89,7 +89,7 @@ public class HomeActivity extends AppCompatActivity
             startActivity(foro);
 
         } else if (id == R.id.nav_circulos) {
-            Intent circulos = new Intent(getApplicationContext(),SettingsActivity.class);
+            Intent circulos = new Intent(getApplicationContext(),CirculosActivity.class);
             startActivity(circulos);
 
         } else if (id == R.id.nav_manage) {
