@@ -4,30 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fondoRegistro"
     tools:context=".ForoActivity">
 
+
     <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="368dp"
-        android:layout_height="69dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
+        android:id="@+id/linearLayout5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            app:srcCompat="@color/colorAccent" />
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            app:srcCompat="@android:color/black" />
+            <Button
+                android:id="@+id/btnPrincipal"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@color/fondoRegistro"
+                android:drawableLeft="@drawable/ic_action_foros"
+                android:drawablePadding="0dp"
+                android:onClick="onclickForo"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Foros" />
+
+            <Button
+                android:id="@+id/btnAportaciones"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@color/fondoRegistro"
+                android:drawableLeft="@drawable/ic_action_comentario"
+                android:onClick="onclickForo"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Aportaciones" />
+        </LinearLayout>
+
+        <fragment
+            android:id="@+id/contenedorrFragment"
+            android:name="com.example.danny.apprepositorio.ForoPrincipalFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
