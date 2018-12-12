@@ -11,6 +11,15 @@
         <item>Octavo semestre</item>
         <item>Noveno semestre</item>
     </string-array>
+    <string-array name="lenguajes">
+        <item>Java</item>
+        <item>C#</item>
+        <item>Python</item>
+        <item>JS</item>
+        <item>Android</item>
+        <item>Escritorio</item>
+        <item>Web</item>
+    </string-array>
     <string name="title_activity_main">Home</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

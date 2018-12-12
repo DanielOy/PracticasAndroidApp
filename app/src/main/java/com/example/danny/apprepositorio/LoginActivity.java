@@ -27,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     public void Registarse (View view){
         Intent i = new Intent(getApplicationContext(),RegistroActivity.class);
         startActivity(i);
+        finish();
     }
     public void Entrar (View view){
         consultar();
@@ -50,8 +51,8 @@ public class LoginActivity extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(),HomeActivity.class);
                 startActivity(i);
             }
-
             cursor.close();
+            finish();
         }catch (Exception e)
         {
             Toast.makeText(this, "El usuario no existe.", Toast.LENGTH_SHORT).show();

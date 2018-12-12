@@ -54,7 +54,8 @@
         <activity android:name=".MensajesActivity" />
         <activity android:name=".UploadActivity" />
         <activity android:name=".CirculosActivity" />
-        <activity android:name=".ForoActivity"></activity>
+        <activity android:name=".ForoActivity" />
+        <activity android:name=".AddForoActivity"></activity>
     </application>
 
 </manifest>
