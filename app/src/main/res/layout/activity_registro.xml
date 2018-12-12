@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fondoRegistro"
     tools:context=".RegistroActivity">
 
     <ScrollView
@@ -14,7 +15,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:orientation="vertical"
             android:padding="5dp">
@@ -22,9 +23,8 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"
-                />
+                android:layout_height="75dp"
+                android:src="@drawable/logo1" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -32,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
                 android:text="Matricula"
+                android:textColor="@color/textFielRegistro"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:typeface="normal" />
@@ -40,6 +41,8 @@
                 android:id="@+id/edtMatricula"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_action_code"
+                android:drawablePadding="20dp"
                 android:ems="10"
                 android:inputType="numberSigned" />
 
@@ -49,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
                 android:text="Correo Electronico:"
+                android:textColor="@color/textFielRegistro"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:typeface="normal" />
@@ -57,6 +61,8 @@
                 android:id="@+id/edtCorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@android:drawable/sym_action_email"
+                android:drawablePadding="20dp"
                 android:ems="10"
                 android:inputType="textEmailAddress" />
 
@@ -66,14 +72,17 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
                 android:text="Contraseña:"
+                android:textColor="@color/textFielRegistro"
                 android:textSize="16sp"
-                android:typeface="normal"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:typeface="normal" />
 
             <EditText
                 android:id="@+id/edtContrasenia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_action_key"
+                android:drawablePadding="20dp"
                 android:ems="10"
                 android:inputType="textPassword" />
 
@@ -83,6 +92,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
                 android:text="Nombre de Usuario"
+                android:textColor="@color/textFielRegistro"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:typeface="normal" />
@@ -91,6 +101,8 @@
                 android:id="@+id/edtUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_action_user"
+                android:drawablePadding="20dp"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -102,7 +114,8 @@
                 android:text="Semestre"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:typeface="normal" />
+                android:typeface="normal"
+                android:textColor="@color/textFielRegistro" />
 
             <Spinner
                 android:id="@+id/spSemestre"
@@ -118,6 +131,7 @@
                 android:id="@+id/swCondiciones"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="monospace"
                 android:showText="false"
                 android:text="Aceptar terminos y condiciones"
@@ -126,21 +140,30 @@
                 android:typeface="normal"
                 tools:checked="false" />
 
-            <Button
-                android:id="@+id/btnAceptar"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="66dp"
-                android:text="Aceptar"
-                android:textSize="18sp"
-                android:onClick="onClickInsertar"/>
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btnCancelar"
-                android:layout_width="match_parent"
-                android:layout_height="63dp"
-                android:text="Cancelar"
-                android:textSize="18sp"
-                android:onClick="Cancelar"/>
+                <Button
+                    android:id="@+id/btnAceptar"
+                    android:layout_width="167dp"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_action_ok"
+                    android:onClick="onClickInsertar"
+                    android:text="Aceptar"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btnCancelar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/ic_action_cancel"
+                    android:onClick="Cancelar"
+                    android:text="Cancelar"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 

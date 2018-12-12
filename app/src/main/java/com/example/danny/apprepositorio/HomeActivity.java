@@ -25,14 +25,14 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -85,6 +85,8 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
         } else if (id == R.id.nav_foros) {
+            Intent foro = new Intent(getApplicationContext(),ForoActivity.class);
+            startActivity(foro);
 
         } else if (id == R.id.nav_circulos) {
             Intent circulos = new Intent(getApplicationContext(),SettingsActivity.class);
@@ -98,7 +100,8 @@ public class HomeActivity extends AppCompatActivity
             startActivity(mapa);
 
         } else if (id == R.id.nav_send) {
-
+            Intent file = new Intent(getApplicationContext(),UploadActivity.class);
+            startActivity(file);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

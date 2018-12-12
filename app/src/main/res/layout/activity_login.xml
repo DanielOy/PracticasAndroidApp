@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/fondo"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="93dp">
@@ -26,7 +26,7 @@
             android:layout_margin="5dp"
             android:fontFamily="serif-monospace"
             android:lineSpacingExtra="10sp"
-            android:text="My App"
+            android:text="@string/app_name"
             android:textAlignment="center"
             android:textSize="36sp"
             android:textStyle="bold" />
@@ -38,6 +38,8 @@
             android:layout_margin="10dp"
             android:layout_weight="0"
             android:background="@color/fondoText"
+            android:drawableLeft="@drawable/ic_action_user"
+            android:drawablePadding="20dp"
             android:ems="10"
             android:inputType="textEmailAddress"
             android:padding="10dp" />
@@ -49,6 +51,8 @@
             android:layout_margin="10dp"
             android:layout_weight="0"
             android:background="@color/fondoText"
+            android:drawableLeft="@drawable/ic_action_key"
+            android:drawablePadding="20dp"
             android:ems="10"
             android:inputType="textPassword"
             android:padding="10dp" />
