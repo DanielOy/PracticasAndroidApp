@@ -37,11 +37,15 @@ public class RegistroActivity extends AppCompatActivity {
     public void Cancelar(View view){
         Intent i = new Intent(getApplicationContext(),LoginActivity.class);
         startActivity(i);
+        finish();
     }
     public void onClickInsertar(View v){
         try{
         registrarUsuario();
             Toast.makeText(this, "Usuario agregado", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(getApplicationContext(),LoginActivity.class);
+            startActivity(i);
+            finish();
         Cancelar(v);
         }catch (Exception ex){
             Toast.makeText(this, "Error: " +ex.getMessage(), Toast.LENGTH_SHORT).show();
@@ -53,7 +57,7 @@ public class RegistroActivity extends AppCompatActivity {
 
         SQLiteDatabase db = conn.getWritableDatabase();
         Random r = new Random();
-        int i = r.nextInt();
+        int i = r.nextInt(100);
         ContentValues values = new ContentValues();
         values.put(Utilidades.CAMPO_ID,(i+""));
         values.put(Utilidades.CAMPO_MATRICULA,matricula.getText().toString());
@@ -64,7 +68,7 @@ public class RegistroActivity extends AppCompatActivity {
 
         Long idResultante = db.insert(Utilidades.TABLA_USUARIOS,Utilidades.CAMPO_ID,values);
 
-        Toast.makeText(this, "ID registro:"+idResultante, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "ID registro:"+idResultante, Toast.LENGTH_SHORT).show();
         db.close();
     }
 }
