@@ -24,42 +24,8 @@
             android:paddingBottom="10dp"
             android:text="Datos del Archivo"
             android:textAlignment="textStart"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="?android:attr/listDivider" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:padding="5dp"
-            android:paddingBottom="10dp"
-            android:text="Nombre del Archivo *"
-            android:textAlignment="textStart"
             android:textSize="18sp"
-            android:textStyle="bold|italic" />
-
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Escriba un nombre "
-            android:inputType="textPersonName"
-            android:padding="5dp"
-            android:paddingBottom="10dp" />
-
-        <View
-            android:id="@+id/divider2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
+            android:textStyle="bold" />
 
         <View
             android:id="@+id/divider4"
@@ -105,6 +71,34 @@
         </LinearLayout>
 
         <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:padding="5dp"
+            android:paddingBottom="10dp"
+            android:text="Nombre del Archivo *"
+            android:textAlignment="textStart"
+            android:textSize="18sp"
+            android:textStyle="bold|italic" />
+
+        <EditText
+            android:id="@+id/edtNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Escriba un nombre "
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:paddingBottom="10dp" />
+
+        <View
             android:id="@+id/divider3"
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -117,7 +111,7 @@
             android:fontFamily="sans-serif"
             android:padding="5dp"
             android:paddingBottom="10dp"
-            android:text="Descripcion *"
+            android:text="Descripcion"
             android:textAlignment="textStart"
             android:textSize="18sp"
             android:textStyle="bold|italic" />
@@ -125,7 +119,7 @@
         <EditText
             android:id="@+id/editText2"
             android:layout_width="match_parent"
-            android:layout_height="162dp"
+            android:layout_height="139dp"
             android:ems="10"
             android:hint="Escriba una descripcion a su codigo"
             android:inputType="textMultiLine"
@@ -142,18 +136,27 @@
             <Button
                 android:id="@+id/btnSubir"
                 android:layout_width="wrap_content"
-                android:layout_height="63dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/ic_action_upload"
+                android:onClick="onClickUpload"
                 android:text="Subir" />
 
             <Button
                 android:id="@+id/btnCancelar"
                 android:layout_width="wrap_content"
-                android:layout_height="63dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:drawableStart="@drawable/ic_action_cancel"
+                android:onClick="onCancelarClick"
                 android:text="Cancelar" />
         </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBarLoad"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:visibility="invisible" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

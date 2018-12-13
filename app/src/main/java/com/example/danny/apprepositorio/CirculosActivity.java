@@ -22,7 +22,8 @@ import java.util.ArrayList;
 public class CirculosActivity extends AppCompatActivity implements
         CrearCirculosFragment.OnFragmentInteractionListener,
         InicioCirculosFragment.OnFragmentInteractionListener,
-        ListaCirculosFragment.OnFragmentInteractionListener
+        ListaCirculosFragment.OnFragmentInteractionListener,
+        MisCirculosFragment.OnFragmentInteractionListener
 {
 
     ConexionSQLiteHelper conn;
@@ -33,6 +34,7 @@ public class CirculosActivity extends AppCompatActivity implements
     CrearCirculosFragment crearCirculosFragment;
     InicioCirculosFragment inicioCirculosFragment;
     ListaCirculosFragment listaCirculosFragment;
+    MisCirculosFragment misCirculosFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +47,11 @@ public class CirculosActivity extends AppCompatActivity implements
         crearCirculosFragment = new CrearCirculosFragment();
         inicioCirculosFragment = new InicioCirculosFragment();
         listaCirculosFragment = new ListaCirculosFragment();
+        misCirculosFragment = new MisCirculosFragment();
 
 
-        getSupportFragmentManager().beginTransaction().add(R.id.contenedorfragmentscirculos,inicioCirculosFragment).commit();
+
+        getSupportFragmentManager().beginTransaction().add(R.id.contenedorfragmentscirculos,misCirculosFragment).commit();
 
         listViewCirculos = (ListView)findViewById(R.id.gruposCirculos);
 
@@ -118,7 +122,7 @@ public class CirculosActivity extends AppCompatActivity implements
                     transaction.replace(R.id.contenedorfragmentscirculos,crearCirculosFragment);
                     break;
                 case R.id.btnStart:
-                    transaction.replace(R.id.contenedorfragmentscirculos,inicioCirculosFragment);
+                    transaction.replace(R.id.contenedorfragmentscirculos,misCirculosFragment);
                     break;
                 case R.id.btnBuscarC:
                     transaction.replace(R.id.contenedorfragmentscirculos,listaCirculosFragment);
