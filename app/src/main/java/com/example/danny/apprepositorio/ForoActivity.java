@@ -45,7 +45,7 @@ public class ForoActivity extends AppCompatActivity
 
         consultarListaForo();
 
-        ArrayAdapter adaptador = new ArrayAdapter(this,android.R.layout.simple_list_item_1,listaInformacion);
+        ArrayAdapter adaptador = new ArrayAdapter(this,android.R.layout.test_list_item,listaInformacion);
         listViewForo.setAdapter(adaptador);
         //Comentario
         listViewForo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
