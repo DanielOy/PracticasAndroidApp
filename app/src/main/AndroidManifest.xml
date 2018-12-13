@@ -47,14 +47,16 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
+            android:label="Mapa" />
         <activity
             android:name=".SettingsActivity"
             android:label="Configuraciones"
             android:theme="@style/Theme.AppCompat"/>
         <activity android:name=".MensajesActivity" />
         <activity android:name=".UploadActivity" />
-        <activity android:name=".CirculosActivity" />
+        <activity android:name=".CirculosActivity"
+            android:label="Circulos"
+            android:theme="@style/Theme.AppCompat"/>
         <activity android:name=".ForoActivity"
             android:theme="@style/Theme.AppCompat"
             android:label="Foros"/>
