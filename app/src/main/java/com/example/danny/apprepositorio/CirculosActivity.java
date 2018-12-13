@@ -42,7 +42,7 @@ public class CirculosActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_circulos);
 
         conn = new ConexionSQLiteHelper(getApplicationContext(),"bd_app",null,1);
-        Toast.makeText(this, "Conexion realziada", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Conexion realziada", Toast.LENGTH_SHORT).show();
 
         crearCirculosFragment = new CrearCirculosFragment();
         inicioCirculosFragment = new InicioCirculosFragment();
@@ -61,7 +61,7 @@ public class CirculosActivity extends AppCompatActivity implements
             ArrayAdapter adaptador = new ArrayAdapter(this,android.R.layout.simple_list_item_1,circulos);
             listViewCirculos.setAdapter(adaptador);
         }catch (Exception e ){
-            Toast.makeText(this, "Error: " +e.getMessage(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Error: " +e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
         //Comentario
@@ -78,7 +78,7 @@ public class CirculosActivity extends AppCompatActivity implements
             }
         });
         } catch (Exception ex){
-            Toast.makeText(this, "Error: " +ex.getMessage(), Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "Error: " +ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
     private void consultarListaForo() {

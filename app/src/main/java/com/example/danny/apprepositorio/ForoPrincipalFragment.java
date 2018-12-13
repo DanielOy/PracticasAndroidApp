@@ -20,6 +20,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.danny.apprepositorio.entidades.Foro;
+import com.example.danny.apprepositorio.utilidades.Adaptador;
+import com.example.danny.apprepositorio.utilidades.Entidad;
 import com.example.danny.apprepositorio.utilidades.UtilidadesForo;
 
 import java.util.ArrayList;
@@ -43,6 +45,9 @@ public class ForoPrincipalFragment extends Fragment {
     ArrayList<String> listaInformacion;
     ArrayList<Foro> listaForo;
     ConexionSQLiteHelper conn;
+
+
+    private Adaptador adaptador;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -79,6 +84,40 @@ public class ForoPrincipalFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+    }
+
+    private ArrayList<Entidad> GetArrayItems() {
+
+        ArrayList<Entidad> listitems  = new ArrayList<>();
+        for(Foro item:listaForo)
+        {
+            switch (item.getLenguaje()){
+                case "Java":
+                listitems.add(new Entidad(R.drawable.java_b,item.titulo,item.descripcion));
+                    break;
+                    case "C#":
+                listitems.add(new Entidad(R.drawable.cplus_b,item.titulo,item.descripcion));
+                    break;
+                    case "Python":
+                listitems.add(new Entidad(R.drawable.python_b,item.titulo,item.descripcion));
+                    break;
+                    case "JS":
+                listitems.add(new Entidad(R.drawable.javascript_b,item.titulo,item.descripcion));
+                    break;
+                    case "Android":
+                listitems.add(new Entidad(R.drawable.android_b,item.titulo,item.descripcion));
+                    break;
+                    case "Escritorio":
+                listitems.add(new Entidad(R.drawable.escritorio_b,item.titulo,item.descripcion));
+                    break;
+                    case "Web":
+                listitems.add(new Entidad(R.drawable.web_b,item.titulo,item.descripcion));
+                    break;
+            }
+
+        }
+        return listitems;
     }
 
 
@@ -111,8 +150,9 @@ public class ForoPrincipalFragment extends Fragment {
         try{
             consultarListaForo();
 
-            ArrayAdapter adaptador = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1,listaInformacion);
-            listViewForo.setAdapter(adaptador);
+            //ArrayAdapter adaptador = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1,listaInformacion);
+            //listViewForo.setAdapter(adaptador);
+            listViewForo.setAdapter((new Adaptador(getActivity(),GetArrayItems())));
             //Comentario
             listViewForo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -155,6 +195,7 @@ public class ForoPrincipalFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_foro_principal, container, false);
         listViewForo = (ListView)v.findViewById(R.id.entradaforo);
+
         consultarlist();
         return v;
     }

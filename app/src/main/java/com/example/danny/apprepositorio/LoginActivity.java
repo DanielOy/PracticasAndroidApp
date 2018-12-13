@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                     i.putExtra("user",x);
                     i.putExtra("pass",y);
                     startActivity(i);
-                    //finish();
+                    finish();
                 }
             }else
             {
