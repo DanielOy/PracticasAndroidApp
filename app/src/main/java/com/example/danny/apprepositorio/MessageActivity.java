@@ -122,6 +122,7 @@ public class MessageActivity extends AppCompatActivity {
 
     }
 
+
     private void readMessage(final String myid, final String userid, final String username)
     {
         mchat = new ArrayList<>();
