@@ -29,6 +29,13 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(i);
         finish();
     }
+
+    public void fire (View view){
+        Intent et = new Intent(getApplicationContext(),FireBaseChat.class);
+        startActivity(et);
+
+    }
+
     public void Entrar (View view){
         consultar();
     }
