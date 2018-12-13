@@ -3,6 +3,7 @@ package com.example.danny.apprepositorio;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,7 +42,7 @@ public class CrearCirculosFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     EditText nombre_circulo,categoria_circulo, descrpcion_ciruclo;
-    Button  btnaceptarcirculo, btncancealrcirculo;
+    ImageButton btnaceptarcirculo;
     public CrearCirculosFragment() {
         // Required empty public constructor
     }
@@ -80,51 +83,58 @@ public class CrearCirculosFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_crear_circulos, container, false);
+        registar(v);
+        return v;
+    }
 
+    public void registar(View v){
         nombre_circulo = (EditText) v.findViewById(R.id.nombreCirculo);
-        categoria_circulo = (EditText) v.findViewById(R.id.categoriaCirculo);
-        descrpcion_ciruclo = (EditText) v.findViewById(R.id.categoriaCirculo);
-        btnaceptarcirculo = (Button) v.findViewById(R.id.btnAceptarCirculos);
+        descrpcion_ciruclo = (EditText) v.findViewById(R.id.descripcionCirculo);
+        btnaceptarcirculo = (ImageButton) v.findViewById(R.id.imageView2);
+
         btnaceptarcirculo.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if (nombre_circulo.getText().toString().length()>0){
+                        if (descrpcion_ciruclo.getText().toString().length()>0){
+
                         ConexionSQLiteHelper conn = new ConexionSQLiteHelper(getActivity(),"bd_app",null,1);
 
                         SQLiteDatabase db = conn.getWritableDatabase();
                         Random r = new Random();
-                        int i = r.nextInt();
+                        int i = r.nextInt(1000);
                         ContentValues values = new ContentValues();
                         values.put(UtilidadesCirculos.CAMPO_ID,(i+""));
                         values.put(UtilidadesCirculos.CAMPO_NOMBRE,nombre_circulo.getText().toString());
                         values.put(UtilidadesCirculos.CAMPO_DESCRIPCION,descrpcion_ciruclo.getText().toString());
-                        values.put(UtilidadesCirculos.CAMPO_CATEGORIA,categoria_circulo.getText().toString());
 
 
                         Long idResultante = db.insert(UtilidadesCirculos.TABLA_CIRCULOS,UtilidadesCirculos.CAMPO_ID,values);
-
                         Toast.makeText(getActivity(), "ID registro:"+idResultante, Toast.LENGTH_SHORT).show();
-                        db.close();
-                    }
-                }
-        );
-        btncancealrcirculo =(Button) v.findViewById(R.id.btnCancelarCirculos);
-        btncancealrcirculo.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                            db.close();
+
                         nombre_circulo.setText("");
-                        categoria_circulo.setText("");
-                        descrpcion_ciruclo.getEditableText().clear();
-                        Toast.makeText(getActivity(),"Se cancelo la creacion",Toast.LENGTH_LONG).show();
+                        descrpcion_ciruclo.setText("");
+                            InicioCirculosFragment frag = new InicioCirculosFragment();
+                            getActivity().getSupportFragmentManager().beginTransaction()
+                                    .replace(R.id.contenedorfragmentscirculos,frag)
+                                    .addToBackStack(null)
+                                    .commit();
+
+                        }
+                        else{
+                            Toast.makeText(getActivity(), "Campo descripcion vacio", Toast.LENGTH_SHORT).show();
+                        }
+                        }else{
+                            Toast.makeText(getActivity(), "Campo nombre vacio", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
         );
-
-        return v;
-
 
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

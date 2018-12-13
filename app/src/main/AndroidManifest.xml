@@ -56,7 +56,9 @@
         <activity android:name=".UploadActivity"
             android:label="Adjuntar Archivo"
             android:theme="@style/Theme.AppCompat"/>
-        <activity android:name=".CirculosActivity" />
+        <activity android:name=".CirculosActivity"
+            android:label="Circulos"
+            android:theme="@style/Theme.AppCompat"/>
         <activity
             android:name=".ForoActivity"
             android:label="Foros"

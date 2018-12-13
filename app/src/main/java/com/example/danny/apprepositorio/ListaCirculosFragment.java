@@ -1,12 +1,25 @@
 package com.example.danny.apprepositorio;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.danny.apprepositorio.entidades.Aportaciones;
+import com.example.danny.apprepositorio.entidades.Circulos;
+import com.example.danny.apprepositorio.utilidades.UtilidadesAportaciones;
+import com.example.danny.apprepositorio.utilidades.UtilidadesCirculos;
+
+import java.util.ArrayList;
 
 
 /**
@@ -28,6 +41,11 @@ public class ListaCirculosFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    ListView listViewCirculos;
+    ArrayList<String> listaInformacion;
+    ArrayList<Circulos> listaCirculos;
+    ConexionSQLiteHelper conn;
 
     public ListaCirculosFragment() {
         // Required empty public constructor
@@ -60,11 +78,63 @@ public class ListaCirculosFragment extends Fragment {
         }
     }
 
+    private void consultarListaForo() {
+        SQLiteDatabase db = conn.getReadableDatabase();
+
+        Circulos circulos =null;
+        listaCirculos =new ArrayList<Circulos>();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM "+UtilidadesCirculos.TABLA_CIRCULOS,null);
+        cursor.moveToFirst();
+
+        while (cursor.moveToNext()){
+            circulos = new Circulos();
+            circulos.setId(cursor.getInt(0));
+            circulos.setNombrecirculo(cursor.getString(1));
+            circulos.setDescrip(cursor.getString(2));
+            circulos.setCategoria(cursor.getString(3));
+
+            listaCirculos.add(circulos);
+        }
+        obtenerLista();
+    }
+
+    public void consultarlist(){
+        conn = new ConexionSQLiteHelper(getActivity(),"bd_app",null,1);
+
+        try{
+            consultarListaForo();
+
+            ArrayAdapter adaptador = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1,listaInformacion);
+            listViewCirculos.setAdapter(adaptador);
+            //Comentario
+            listViewCirculos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String informacion = "id: "+ listaCirculos.get(position).getId()+"\n";
+                    informacion+="Titulo: "+ listaCirculos.get(position).getNombrecirculo()+"\n";
+                    informacion+="Descripcion: "+ listaCirculos.get(position).getDescrip();
+                    Toast.makeText(getActivity(), informacion, Toast.LENGTH_SHORT).show();
+                }
+            });}catch (Exception e){
+            Toast.makeText(getActivity(), "Error we", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private void obtenerLista() {
+        listaInformacion = new ArrayList<String>();
+        for (int i = 0; i< listaCirculos.size(); i++){
+            listaInformacion.add(listaCirculos.get(i).getNombrecirculo() +" - "+
+                    listaCirculos.get(i).getDescrip());
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lista_circulos, container, false);
+        View v = inflater.inflate(R.layout.fragment_lista_circulos, container, false);
+        listViewCirculos = (ListView)v.findViewById(R.id.gruposCirculos);
+        consultarlist();
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
