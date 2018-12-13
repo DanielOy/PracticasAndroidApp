@@ -90,7 +90,8 @@
             android:layout_marginRight="50dp"
             android:drawableLeft="@drawable/ic_action_edit"
             android:padding="20dp"
-            android:text="Editar Informacion" />
+            android:text="Editar Informacion"
+            android:onClick="onclickEdit"/>
 
     </LinearLayout>
 

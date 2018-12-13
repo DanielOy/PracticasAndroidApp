@@ -11,4 +11,9 @@
     <color name="botones">#90CAF9</color>
     <color name="botones2">#9e3982d3</color>
     <color name="successupload">#701ffd1c</color>
+    <color name="white">#FFFFFF</color>
+    <color name="grey">#E5E5E5</color>
+    <color name="address">#2F7092</color>
+    <color name="circleBorder">#50FFFFFF</color>
+    <color name="solidCircle">#AAFFFFFF</color>
 </resources>
