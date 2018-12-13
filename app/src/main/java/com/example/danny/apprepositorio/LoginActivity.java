@@ -30,12 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
-    public void testeFire (View view){
 
-        Intent prueba = new Intent(getApplicationContext(),FireBaseChat.class);
-        startActivity(prueba);
-
-    }
     public void Entrar (View view){
         consultar();
     }
