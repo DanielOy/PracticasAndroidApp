@@ -132,6 +132,7 @@ public class ForoPrincipalFragment extends Fragment {
                     i.putExtra("Titulo",listaForo.get(position).getTitulo());
                     i.putExtra("Descripcion",listaForo.get(position).getDescripcion());
                     i.putExtra("Plataforma",listaForo.get(position).getLenguaje());
+                    i.putExtra("Id",listaForo.get(position).getId());
                     startActivity(i);
                     return false;
                 }

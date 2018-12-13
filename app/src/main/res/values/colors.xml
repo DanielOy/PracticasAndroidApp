@@ -10,4 +10,5 @@
     <color name="textFielRegistro">#e0e0e0</color>
     <color name="botones">#90CAF9</color>
     <color name="botones2">#9e3982d3</color>
+    <color name="successupload">#701ffd1c</color>
 </resources>

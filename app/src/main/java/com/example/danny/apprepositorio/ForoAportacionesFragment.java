@@ -85,7 +85,10 @@ public class ForoAportacionesFragment extends Fragment {
         Aportaciones aportaciones =null;
         listaAportaciones =new ArrayList<Aportaciones>();
         //select * from usuarios
-        Cursor cursor = db.rawQuery("SELECT * FROM "+UtilidadesAportaciones.TABLA_APORTACIONES,null);
+        String[] parametros = new String[]{("user")};
+        Cursor cursor = db.rawQuery("SELECT * FROM "+UtilidadesAportaciones.TABLA_APORTACIONES+" WHERE "+UtilidadesAportaciones.CAMPO_USUARIO+
+                "=?",parametros);
+        cursor.moveToFirst();
 
         while (cursor.moveToNext()){
             aportaciones = new Aportaciones();
