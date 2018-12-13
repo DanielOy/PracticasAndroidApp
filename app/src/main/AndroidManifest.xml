@@ -65,7 +65,8 @@
             android:theme="@style/Theme.AppCompat" />
         <activity android:name=".FireBaseChat" />
         <activity android:name=".RegistroChatFire" />
-        <activity android:name=".ContenidoFire"></activity>
+        <activity android:name=".ContenidoFire" />
+        <activity android:name=".MessageActivity"></activity>
     </application>
 
 </manifest>
