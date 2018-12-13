@@ -16,13 +16,13 @@
 
     <TextView
         android:id="@+id/slide_heading"
-        android:layout_width="99dp"
-        android:layout_height="32dp"
+        android:layout_width="147dp"
+        android:layout_height="39dp"
         android:layout_above="@+id/slide_desc"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="251dp"
-        android:layout_marginBottom="33dp"
+        android:layout_marginTop="245dp"
+        android:layout_marginBottom="32dp"
         android:fontFamily="monospace"
         android:text="HEADING"
         android:textAlignment="center"

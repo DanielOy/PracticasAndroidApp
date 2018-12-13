@@ -51,19 +51,29 @@
         <activity
             android:name=".SettingsActivity"
             android:label="Configuraciones"
-            android:theme="@style/Theme.AppCompat"/>
+            android:theme="@style/Theme.AppCompat" />
         <activity android:name=".MensajesActivity" />
         <activity android:name=".UploadActivity" />
+
+
+        <activity
+            android:name=".ForoActivity"
+            android:label="Foros"
+            android:theme="@style/Theme.AppCompat" />
+
         <activity android:name=".CirculosActivity"
             android:label="Circulos"
             android:theme="@style/Theme.AppCompat"/>
-        <activity android:name=".ForoActivity"
-            android:theme="@style/Theme.AppCompat"
-            android:label="Foros"/>
+
         <activity android:name=".AddForoActivity"
-            android:theme="@style/Theme.AppCompat"
+
             android:label="Agregar Entrada"
-            ></activity>
+            android:theme="@style/Theme.AppCompat" />
+        <activity android:name=".FireBaseChat" />
+        <activity android:name=".RegistroChatFire" />
+        <activity android:name=".ContenidoFire" />
+        <activity android:name=".MessageActivity"></activity>
+
         <activity android:name=".NewPerfilActivity"></activity>
         <activity android:name=".ForoTopicActivity"></activity>
     </application>

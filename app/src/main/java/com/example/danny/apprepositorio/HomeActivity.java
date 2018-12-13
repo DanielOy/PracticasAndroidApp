@@ -122,7 +122,7 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.logout) {
             return true;
         }
 
@@ -153,7 +153,7 @@ public class HomeActivity extends AppCompatActivity
             startActivity(mapa);
 
         } else if (id == R.id.nav_send) {
-            Intent file = new Intent(getApplicationContext(),UploadActivity.class);
+            Intent file = new Intent(getApplicationContext(),FireBaseChat.class);
             startActivity(file);
         }
 
