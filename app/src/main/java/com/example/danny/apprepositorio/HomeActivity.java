@@ -120,7 +120,7 @@ public class HomeActivity extends AppCompatActivity
     }
     public void perfil (View view){
         if (getApplicationContext().getClass()!=PerfilActivity.class){
-        Intent i = new Intent(getApplicationContext(),PerfilActivity.class);
+        Intent i = new Intent(getApplicationContext(),NewPerfilActivity.class);
         startActivity(i);}
     }
 }

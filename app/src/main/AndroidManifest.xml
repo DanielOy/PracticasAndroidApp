@@ -62,6 +62,7 @@
             android:theme="@style/Theme.AppCompat"
             android:label="Agregar Entrada"
             ></activity>
+        <activity android:name=".NewPerfilActivity"></activity>
     </application>
 
 </manifest>
