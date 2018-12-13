@@ -50,8 +50,10 @@ public class LoginActivity extends AppCompatActivity {
                 {
                     //Abrimos la ventana
                     Intent i = new Intent(getApplicationContext(),HomeActivity.class);
+                    i.putExtra("user",x);
+                    i.putExtra("pass",y);
                     startActivity(i);
-                    finish();
+                    //finish();
                 }
             }else
             {

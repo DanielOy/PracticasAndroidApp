@@ -1,6 +1,8 @@
 package com.example.danny.apprepositorio;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,6 +16,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.danny.apprepositorio.utilidades.Utilidades;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -22,6 +29,8 @@ public class HomeActivity extends AppCompatActivity
 
     private ViewPager  mSlideViewPager;
     private SliderAdapter sliderAdapter;
+    public String us;
+    public String ps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +38,40 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        try {
+            Intent iin= getIntent();
+            Bundle b = iin.getExtras();
+
+            if(b!=null)
+            {
+                String us = b.getString("user");
+                String ps =  b.getString("pass");
+
+                ConexionSQLiteHelper conn = new ConexionSQLiteHelper(getApplicationContext(),"bd_app",null,1);
+                SQLiteDatabase db = conn.getReadableDatabase();
+                String[] parametros = {us,ps};
+                String[] campos = {Utilidades.CAMPO_CORREO,Utilidades.CAMPO_NOMBRE};
+                String x, y;
+                Cursor cursor = db.query(Utilidades.TABLA_USUARIOS, campos, Utilidades.CAMPO_NOMBRE + "=? AND " + Utilidades.CAMPO_CONTRASENIA+"=?", parametros, null, null, null);
+                cursor.moveToFirst();
+                x=cursor.getString(0);
+                y=cursor.getString(1);
+
+                TextView navu, navc;
+                navu = (TextView) findViewById(R.id.navUser);
+                navc = (TextView) findViewById(R.id.navCorreo);
+
+                navu.setText(x);
+                navc.setText(y);
+                cursor.close();
+                conn.close();
+
+            }
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
