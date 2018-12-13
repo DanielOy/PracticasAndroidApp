@@ -6,7 +6,6 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroupOverlay;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,16 +24,16 @@ public class SliderAdapter extends PagerAdapter {
             {
 
                     R.drawable.crear_circulos,
-                    R.drawable.crear_circulos,
-                    R.drawable.crear_circulos
+                   R.drawable.ic_school_black_24dp,
+                    R.drawable.ic_laptop_windows_black_24dp
 
             };
 
     public String [] slide_headings ={
 
-            "DESARROLLADORES",
-            "INSTITUO TECNOLOGICO SUPERIOR DE VALLADOLID",
-            "ALGO EXTRA"
+            "DESARROLLADORES" ,
+            "INSTITUTO TECNOLOGICO SUPERIOR DE VALLADOLID",
+            "INGENIERIA EN SISTEMAS COMPUTACIONALES"
     };
 
     public String [] slide_descs ={
