@@ -129,7 +129,7 @@ public class ForoAportacionesFragment extends Fragment {
     private void obtenerLista() {
         listaInformacion = new ArrayList<String>();
         for (int i = 0; i< listaAportaciones.size(); i++){
-            listaInformacion.add(listaAportaciones.get(i).getTitulo() +" - "+
+            listaInformacion.add(listaAportaciones.get(i).getFecha() +" - "+
                     listaAportaciones.get(i).getDescripcion());
         }
     }

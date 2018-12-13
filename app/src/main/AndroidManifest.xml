@@ -65,6 +65,7 @@
             android:label="Agregar Entrada"
             ></activity>
         <activity android:name=".NewPerfilActivity"></activity>
+        <activity android:name=".ForoTopicActivity"></activity>
     </application>
 
 </manifest>
