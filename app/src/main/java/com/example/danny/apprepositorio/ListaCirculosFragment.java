@@ -1,5 +1,6 @@
 package com.example.danny.apprepositorio;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,12 +15,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.danny.apprepositorio.entidades.Aportaciones;
 import com.example.danny.apprepositorio.entidades.Circulos;
-import com.example.danny.apprepositorio.utilidades.UtilidadesAportaciones;
 import com.example.danny.apprepositorio.utilidades.UtilidadesCirculos;
+import com.example.danny.apprepositorio.utilidades.UtilidadesMiscirculos;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 /**
@@ -81,13 +82,13 @@ public class ListaCirculosFragment extends Fragment {
     private void consultarListaForo() {
         SQLiteDatabase db = conn.getReadableDatabase();
 
-        Circulos circulos =null;
-        listaCirculos =new ArrayList<Circulos>();
+        Circulos circulos = null;
+        listaCirculos = new ArrayList<Circulos>();
 
-        Cursor cursor = db.rawQuery("SELECT * FROM "+UtilidadesCirculos.TABLA_CIRCULOS,null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + UtilidadesCirculos.TABLA_CIRCULOS, null);
         cursor.moveToFirst();
 
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             circulos = new Circulos();
             circulos.setId(cursor.getInt(0));
             circulos.setNombrecirculo(cursor.getString(1));
@@ -99,31 +100,59 @@ public class ListaCirculosFragment extends Fragment {
         obtenerLista();
     }
 
-    public void consultarlist(){
-        conn = new ConexionSQLiteHelper(getActivity(),"bd_app",null,1);
+    public void consultarlist() {
+        conn = new ConexionSQLiteHelper(getActivity(), "bd_app", null, 1);
 
-        try{
+        try {
             consultarListaForo();
 
-            ArrayAdapter adaptador = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1,listaInformacion);
+            ArrayAdapter adaptador = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, listaInformacion);
             listViewCirculos.setAdapter(adaptador);
             //Comentario
             listViewCirculos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    String informacion = "id: "+ listaCirculos.get(position).getId()+"\n";
-                    informacion+="Titulo: "+ listaCirculos.get(position).getNombrecirculo()+"\n";
-                    informacion+="Descripcion: "+ listaCirculos.get(position).getDescrip();
+                    String informacion = "id: " + listaCirculos.get(position).getId() + "\n";
+                    informacion += "Titulo: " + listaCirculos.get(position).getNombrecirculo() + "\n";
+                    informacion += "Descripcion: " + listaCirculos.get(position).getDescrip();
                     Toast.makeText(getActivity(), informacion, Toast.LENGTH_SHORT).show();
+                    registar(view, listaCirculos.get(position));
                 }
-            });}catch (Exception e){
+            });
+        } catch (Exception e) {
             Toast.makeText(getActivity(), "Error we", Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void registar(View v, Circulos circulos) {
+
+        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(getActivity(), "bd_app", null, 1);
+
+        SQLiteDatabase db = conn.getWritableDatabase();
+        Random r = new Random();
+        int i = r.nextInt(1000);
+        ContentValues values = new ContentValues();
+        values.put(UtilidadesMiscirculos.CAMPO_ID, (circulos.getId()));
+        values.put(UtilidadesMiscirculos.CAMPO_NOMBRE, circulos.getNombrecirculo());
+        values.put(UtilidadesMiscirculos.CAMPO_DESCRIPCION, circulos.getDescrip());
+        values.put(UtilidadesMiscirculos.CAMPO_USER, "user");
+        values.put(UtilidadesMiscirculos.CAMPO_IDUSER, 1);
+
+        Long idResultante = db.insert(UtilidadesMiscirculos.TABLA_MISCIRCULOS, UtilidadesMiscirculos.CAMPO_ID, values);
+        Toast.makeText(getActivity(), "ID registro mi circulo:" + idResultante, Toast.LENGTH_SHORT).show();
+        db.close();
+
+        MisCirculosFragment frag = new MisCirculosFragment();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.contenedorfragmentscirculos, frag)
+                .addToBackStack(null)
+                .commit();
+    }
+
     private void obtenerLista() {
         listaInformacion = new ArrayList<String>();
-        for (int i = 0; i< listaCirculos.size(); i++){
-            listaInformacion.add(listaCirculos.get(i).getNombrecirculo() +" - "+
+        for (int i = 0; i < listaCirculos.size(); i++) {
+            listaInformacion.add(listaCirculos.get(i).getNombrecirculo() + " - " +
                     listaCirculos.get(i).getDescrip());
         }
     }
@@ -132,7 +161,7 @@ public class ListaCirculosFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_lista_circulos, container, false);
-        listViewCirculos = (ListView)v.findViewById(R.id.gruposCirculos);
+        listViewCirculos = (ListView) v.findViewById(R.id.gruposCirculos);
         consultarlist();
         return v;
     }

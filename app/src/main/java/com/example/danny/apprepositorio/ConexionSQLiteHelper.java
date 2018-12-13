@@ -9,6 +9,7 @@ import com.example.danny.apprepositorio.utilidades.Utilidades;
 import com.example.danny.apprepositorio.utilidades.UtilidadesAportaciones;
 import com.example.danny.apprepositorio.utilidades.UtilidadesCirculos;
 import com.example.danny.apprepositorio.utilidades.UtilidadesForo;
+import com.example.danny.apprepositorio.utilidades.UtilidadesMiscirculos;
 
 public class ConexionSQLiteHelper extends SQLiteOpenHelper {
 
@@ -21,6 +22,8 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(UtilidadesCirculos.CREAR_TABLA_CIRCULOS);
         db.execSQL(UtilidadesForo.CREAR_TABLA_FORO);
         db.execSQL(UtilidadesAportaciones.CREAR_TABLA_APORTACIONES);
+    db.execSQL(UtilidadesMiscirculos.CREAR_TABLA_MISCIRCULOS);
+
     }
 
     @Override
@@ -31,6 +34,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+UtilidadesCirculos.TABLA_CIRCULOS);
         db.execSQL("DROP TABLE IF EXISTS "+UtilidadesForo.TABLA_FORO);
         db.execSQL("DROP TABLE IF EXISTS "+UtilidadesAportaciones.TABLA_APORTACIONES);
+    db.execSQL("DROP TABLE IF EXISTS "+UtilidadesMiscirculos.TABLA_MISCIRCULOS);
         onCreate(db);
     }
 

@@ -1,12 +1,25 @@
 package com.example.danny.apprepositorio;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.danny.apprepositorio.entidades.Circulos;
+import com.example.danny.apprepositorio.entidades.Miscirculos;
+import com.example.danny.apprepositorio.utilidades.UtilidadesCirculos;
+import com.example.danny.apprepositorio.utilidades.UtilidadesMiscirculos;
+
+import java.util.ArrayList;
 
 
 /**
@@ -26,6 +39,11 @@ public class MisCirculosFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    ListView listViewMisCirculos;
+    ArrayList<String> listaInformacion;
+    ArrayList<Miscirculos> listaMisCirculos;
+    ConexionSQLiteHelper conn;
 
     private OnFragmentInteractionListener mListener;
 
@@ -60,11 +78,64 @@ public class MisCirculosFragment extends Fragment {
         }
     }
 
+    private void consultarListaForo() {
+        SQLiteDatabase db = conn.getReadableDatabase();
+
+        Miscirculos miscirculos =null;
+        listaMisCirculos =new ArrayList<Miscirculos>();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM "+UtilidadesMiscirculos.TABLA_MISCIRCULOS,null);
+        cursor.moveToFirst();
+
+        while (cursor.moveToNext()){
+            miscirculos = new Miscirculos();
+            miscirculos.setId(cursor.getInt(0));
+            miscirculos.setNombrecirculo(cursor.getString(1));
+            miscirculos.setDescrip(cursor.getString(2));
+            miscirculos.setUser(cursor.getString(3));
+
+            listaMisCirculos.add(miscirculos);
+        }
+        obtenerLista();
+    }
+
+    public void consultarlist(){
+        conn = new ConexionSQLiteHelper(getActivity(),"bd_app",null,1);
+
+        try{
+            consultarListaForo();
+
+            ArrayAdapter adaptador = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1,listaInformacion);
+            listViewMisCirculos.setAdapter(adaptador);
+            //Comentario
+            listViewMisCirculos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String informacion = "id: "+ listaMisCirculos.get(position).getId()+"\n";
+                    informacion+="Titulo: "+ listaMisCirculos.get(position).getNombrecirculo()+"\n";
+                    informacion+="Descripcion: "+ listaMisCirculos.get(position).getDescrip();
+                    Toast.makeText(getActivity(), informacion, Toast.LENGTH_SHORT).show();
+                }
+            });}catch (Exception e){
+            Toast.makeText(getActivity(), "Error we", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private void obtenerLista() {
+        listaInformacion = new ArrayList<String>();
+        for (int i = 0; i< listaMisCirculos.size(); i++){
+            listaInformacion.add(listaMisCirculos.get(i).getNombrecirculo() +" - "+
+                    listaMisCirculos.get(i).getDescrip());
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mis_circulos, container, false);
+        View v = inflater.inflate(R.layout.fragment_mis_circulos, container, false);
+        listViewMisCirculos = (ListView) v.findViewById(R.id.misCirculos);
+        consultarlist();
+        return  v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
