@@ -7,12 +7,15 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -76,10 +79,34 @@ public class ForoPrincipalFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+    }
+
+
+    private void consultarListaForo() {
+        SQLiteDatabase db = conn.getReadableDatabase();
+
+        Foro foro =null;
+        listaForo=new ArrayList<Foro>();
+        //select * from usuarios
+        Cursor cursor = db.rawQuery("SELECT * FROM "+UtilidadesForo.TABLA_FORO,null);
+
+        while (cursor.moveToNext()){
+            foro = new Foro();
+            foro.setId(cursor.getInt(0));
+            foro.setTitulo(cursor.getString(1));
+            foro.setLenguaje(cursor.getString(2));
+            foro.setDescripcion(cursor.getString(3));
+            foro.setAutor(cursor.getString(4));
+            foro.setFecha(cursor.getString(5));
+
+            listaForo.add(foro);
+        }
+
+        obtenerLista();
+    }
+
+    public void consultarlist(){
         conn = new ConexionSQLiteHelper(getActivity(),"bd_app",null,1);
-        Activity a = getActivity();
-        a.findViewById(R.id.entradaforo);
-        listViewForo = (ListView)getActivity().findViewById(R.id.entradaforo);
 
         try{
             consultarListaForo();
@@ -100,27 +127,6 @@ public class ForoPrincipalFragment extends Fragment {
             Toast.makeText(getActivity(), "Error we", Toast.LENGTH_SHORT).show();
         }
     }
-
-    private void consultarListaForo() {
-        SQLiteDatabase db = conn.getReadableDatabase();
-
-        Foro foro =null;
-        listaForo=new ArrayList<Foro>();
-        //select * from usuarios
-        Cursor cursor = db.rawQuery("SELECT * FROM "+UtilidadesForo.TABLA_FORO,null);
-
-        while (cursor.moveToNext()){
-            foro = new Foro();
-            foro.setId(cursor.getInt(0));
-            foro.setTitulo(cursor.getString(1));
-            foro.setAutor(cursor.getString(2));
-
-            listaForo.add(foro);
-        }
-
-        obtenerLista();
-    }
-
     private void obtenerLista() {
         listaInformacion = new ArrayList<String>();
         for (int i=0;i<listaForo.size();i++){
@@ -133,7 +139,10 @@ public class ForoPrincipalFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_foro_principal, container, false);
+        View v = inflater.inflate(R.layout.fragment_foro_principal, container, false);
+        listViewForo = (ListView)v.findViewById(R.id.entradaforo);
+        consultarlist();
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

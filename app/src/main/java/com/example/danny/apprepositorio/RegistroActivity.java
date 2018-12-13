@@ -35,8 +35,7 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     public void Cancelar(View view){
-        Intent i = new Intent(getApplicationContext(),LoginActivity.class);
-        startActivity(i);
+        onBackPressed();
         finish();
     }
     public void onClickInsertar(View v){

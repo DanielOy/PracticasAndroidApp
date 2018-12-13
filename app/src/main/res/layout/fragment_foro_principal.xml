@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fondoRegistro"
-    tools:context=".ForoPrincipalFragment">
+    tools:context=".ForoPrincipalFragment"
+    android:id="@+id/layoutforo">
 
     <!-- TODO: Update blank fragment layout -->
 
