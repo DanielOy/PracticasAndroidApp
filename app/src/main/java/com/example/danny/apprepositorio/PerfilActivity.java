@@ -217,4 +217,10 @@ public class PerfilActivity extends AppCompatActivity {
 
         }
     }
+
+    public void onclickEdit(View view) {
+
+        Intent i = new Intent(getApplicationContext(),NewPerfilActivity.class);
+        startActivity(i);
+    }
 }//FINAL CODIGO
