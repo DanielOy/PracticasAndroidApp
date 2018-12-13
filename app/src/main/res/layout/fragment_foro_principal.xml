@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fondoRegistro"
-    tools:context=".ForoPrincipalFragment">
+    tools:context=".ForoPrincipalFragment"
+    android:id="@+id/layoutforo">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -16,7 +17,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
+            android:background="@color/fondoRegistro"
             android:orientation="vertical">
 
             <LinearLayout
@@ -25,31 +26,39 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:drawableStart="@drawable/ic_action_upload"
-                    android:onClick="onclickAdd"
-                    />
+                    android:id="@+id/btnAdd"
+                    android:layout_width="26dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/trasparente"
+                    android:drawableStart="@drawable/ic_action_add"
+                    android:onClick="onclickAdd" />
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="269dp"
+                <EditText
+                    android:id="@+id/edtFiltro"
+                    android:layout_width="243dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="monospace"
-                    android:text="Principal"
-                    android:textAlignment="center"
-                    android:textColor="@color/textFielRegistro"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+                <Button
+                    android:id="@+id/btnBuscar"
+                    android:layout_width="18dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/trasparente"
+                    android:drawableStart="@drawable/ic_action_search"
+                    android:padding="5dp" />
 
             </LinearLayout>
 
             <ListView
-                android:id="@+id/entradasForo"
+                android:id="@+id/entradaforo"
                 android:layout_width="match_parent"
-                android:layout_height="546dp">
+                android:layout_height="554dp">
 
             </ListView>
         </LinearLayout>

@@ -1,6 +1,7 @@
 package com.example.danny.apprepositorio;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -36,7 +37,10 @@ public class AddForoActivity extends AppCompatActivity {
     public void onClickAceptar(View view) {
         try {
             registrarForo();
-            Toast.makeText(this, "Agregar", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Agregar", Toast.LENGTH_SHORT).show();
+            Intent in = new Intent(getApplicationContext(),ForoActivity.class);
+            startActivity(in);
+            finish();
         }catch (Exception ex){
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
         }
@@ -52,7 +56,7 @@ public class AddForoActivity extends AppCompatActivity {
         Date curent = Calendar.getInstance().getTime();
 
         ContentValues values = new ContentValues();
-        values.put(UtilidadesForo.CAMPO_ID,(i+""));
+        values.put(UtilidadesForo.CAMPO_ID,(i));
         values.put(UtilidadesForo.CAMPO_TITULO,titulo.getText().toString());
         values.put(UtilidadesForo.CAMPO_LENGUAJE,lenguajes.getSelectedItem().toString());
         values.put(UtilidadesForo.CAMPO_DESCRIPCION,descripcion.getText().toString());

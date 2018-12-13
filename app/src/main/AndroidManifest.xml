@@ -50,12 +50,18 @@
             android:label="@string/title_activity_maps" />
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" />
+            android:label="Configuraciones"
+            android:theme="@style/Theme.AppCompat"/>
         <activity android:name=".MensajesActivity" />
         <activity android:name=".UploadActivity" />
         <activity android:name=".CirculosActivity" />
-        <activity android:name=".ForoActivity" />
-        <activity android:name=".AddForoActivity"></activity>
+        <activity android:name=".ForoActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:label="Foros"/>
+        <activity android:name=".AddForoActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:label="Agregar Entrada"
+            ></activity>
     </application>
 
 </manifest>
