@@ -117,13 +117,26 @@ public class ForoPrincipalFragment extends Fragment {
             listViewForo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    String informacion = "id: "+listaForo.get(position).getId()+"\n";
-                    informacion+="Titulo: "+listaForo.get(position).getTitulo()+"\n";
-                    informacion+="Autor: "+listaForo.get(position).getAutor();
-
+                    //String informacion = "";//"id: "+listaForo.get(position).getId()+"\n";
+                    //informacion+="Titulo: "+listaForo.get(position).getTitulo()+"\n";
+                    //informacion+="Descripcion: "+listaForo.get(position).getDescripcion();
+                    String informacion = "Manten precionado para ver detalles";
                     Toast.makeText(getActivity(), informacion, Toast.LENGTH_SHORT).show();
                 }
-            });}catch (Exception e){
+            });
+            listViewForo.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent i = new Intent(getActivity(),ForoTopicActivity.class);
+                    i.putExtra("Autor",listaForo.get(position).getAutor());
+                    i.putExtra("Titulo",listaForo.get(position).getTitulo());
+                    i.putExtra("Descripcion",listaForo.get(position).getDescripcion());
+                    i.putExtra("Plataforma",listaForo.get(position).getLenguaje());
+                    startActivity(i);
+                    return false;
+                }
+            });
+        }catch (Exception e){
             Toast.makeText(getActivity(), "Error we", Toast.LENGTH_SHORT).show();
         }
     }

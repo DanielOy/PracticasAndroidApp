@@ -28,7 +28,7 @@
             android:ems="10"
             android:hint="Agregue un titulo"
             android:inputType="textPersonName"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textView17"
@@ -54,14 +54,20 @@
             android:textSize="14sp"
             android:textStyle="bold" />
 
-        <EditText
+        <MultiAutoCompleteTextView
             android:id="@+id/edtDescripcion"
             android:layout_width="match_parent"
-            android:layout_height="310dp"
+            android:layout_height="301dp"
             android:ems="10"
             android:hint="Inserte una descripcion al tema a crear"
             android:inputType="textMultiLine"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
+
+        <View
+            android:id="@+id/divider6"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -74,10 +80,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:text="Aceptar"
-                android:textAlignment="center"
+                android:drawableLeft="@drawable/ic_action_ok"
                 android:onClick="onClickAceptar"
-                />
+                android:text="Aceptar"
+                android:textAlignment="center" />
 
             <Button
                 android:id="@+id/button3"
@@ -85,10 +91,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:text="Cancelar"
-                android:textAlignment="center"
+                android:drawableLeft="@drawable/ic_action_cancel"
                 android:onClick="onClickCancelar"
-                />
+                android:text="Cancelar"
+                android:textAlignment="center" />
         </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
