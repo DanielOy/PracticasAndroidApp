@@ -5,16 +5,16 @@
     <header
         android:fragment="com.example.danny.apprepositorio.SettingsActivity$GeneralPreferenceFragment"
         android:icon="@drawable/ic_action_user"
-        android:title="Acount" />
+        android:title="Cuenta" />
 
     <header
         android:fragment="com.example.danny.apprepositorio.SettingsActivity$NotificationPreferenceFragment"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/pref_header_notifications" />
+        android:icon="@drawable/ic_action_notificaciones"
+        android:title="Notificaciones" />
 
     <header
         android:fragment="com.example.danny.apprepositorio.SettingsActivity$DataSyncPreferenceFragment"
-        android:icon="@drawable/ic_sync_black_24dp"
-        android:title="@string/pref_header_data_sync" />
+        android:icon="@drawable/ic_action_sync"
+        android:title="Datos y sincronizacion" />
 
 </preference-headers>

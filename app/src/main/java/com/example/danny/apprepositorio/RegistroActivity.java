@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.danny.apprepositorio.utilidades.Utilidades;
@@ -20,6 +21,7 @@ public class RegistroActivity extends AppCompatActivity {
     Button cancelar, aceptar;
     EditText matricula, email, pass,name;
     Spinner sem;
+    Switch aSwitch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,7 @@ public class RegistroActivity extends AppCompatActivity {
         pass=(EditText)findViewById(R.id.edtContrasenia);
         name=(EditText)findViewById(R.id.edtUser);
         sem=(Spinner)findViewById(R.id.spSemestre);
+        aSwitch=(Switch)findViewById(R.id.swCondiciones);
     }
 
     public void Cancelar(View view){
@@ -40,14 +43,19 @@ public class RegistroActivity extends AppCompatActivity {
     }
     public void onClickInsertar(View v){
         try{
+            if(!(matricula.getText().length()>0)) throw new Exception("Sin Matricula");
+            if(!(email.getText().length()>0)) throw new Exception("Sin Email");
+            if(!(pass.getText().length()>0)) throw new Exception("No se definio una contraseña");
+            if(!(name.getText().length()>0)) throw new Exception("No se definio un nombre de usuario");
+            if(!(aSwitch.isChecked())) throw new Exception("Favor de primero leer y aceptar los terminos y condiciones.");
         registrarUsuario();
             Toast.makeText(this, "Usuario agregado", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getApplicationContext(),LoginActivity.class);
             startActivity(i);
             finish();
-        Cancelar(v);
+        //Cancelar(v);
         }catch (Exception ex){
-            Toast.makeText(this, "Error: " +ex.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 

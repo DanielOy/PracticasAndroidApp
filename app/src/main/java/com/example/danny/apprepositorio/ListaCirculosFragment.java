@@ -112,7 +112,7 @@ public class ListaCirculosFragment extends Fragment {
             listViewCirculos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    String informacion = "id: " + listaCirculos.get(position).getId() + "\n";
+                    String informacion="";// = "id: " + listaCirculos.get(position).getId() + "\n";
                     informacion += "Titulo: " + listaCirculos.get(position).getNombrecirculo() + "\n";
                     informacion += "Descripcion: " + listaCirculos.get(position).getDescrip();
                     Toast.makeText(getActivity(), informacion, Toast.LENGTH_SHORT).show();
@@ -120,7 +120,7 @@ public class ListaCirculosFragment extends Fragment {
                 }
             });
         } catch (Exception e) {
-            Toast.makeText(getActivity(), "Error we", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity(), "Error we", Toast.LENGTH_SHORT).show();
         }
     }
 

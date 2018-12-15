@@ -27,11 +27,10 @@
                 android:layout_margin="9dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/circle"
-                android:padding="3dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_user"
                 android:onClick="onclick"
-                />
+                android:padding="3dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icono222" />
 
 
         </RelativeLayout>

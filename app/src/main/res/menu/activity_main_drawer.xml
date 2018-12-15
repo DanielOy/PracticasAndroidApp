@@ -17,9 +17,10 @@
             android:icon="@drawable/ic_action_circles"
             android:title="Circulos" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Configuraciones" />
+            android:id="@+id/nav_send"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Chat" />
+
     </group>
 
     <item android:title="Communicate">
@@ -29,9 +30,14 @@
                 android:icon="@drawable/ic_action_code"
                 android:title="Proyectos" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Pendiente" />
+                android:id="@+id/nav_manage"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Configuraciones" />
+            <item
+                android:id="@+id/nav_exit"
+                android:icon="@drawable/ic_action_cancel"
+                android:title="Cerrar Sesion" />
+
         </menu>
     </item>
 

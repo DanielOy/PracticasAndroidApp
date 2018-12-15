@@ -2,13 +2,17 @@ package com.example.danny.apprepositorio;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +26,7 @@ import android.widget.Toast;
 import com.example.danny.apprepositorio.entidades.Foro;
 import com.example.danny.apprepositorio.utilidades.Adaptador;
 import com.example.danny.apprepositorio.utilidades.Entidad;
+import com.example.danny.apprepositorio.utilidades.Utilidades;
 import com.example.danny.apprepositorio.utilidades.UtilidadesForo;
 
 import java.util.ArrayList;
@@ -154,26 +159,12 @@ public class ForoPrincipalFragment extends Fragment {
             //listViewForo.setAdapter(adaptador);
             listViewForo.setAdapter((new Adaptador(getActivity(),GetArrayItems())));
             //Comentario
-            listViewForo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    //String informacion = "";//"id: "+listaForo.get(position).getId()+"\n";
-                    //informacion+="Titulo: "+listaForo.get(position).getTitulo()+"\n";
-                    //informacion+="Descripcion: "+listaForo.get(position).getDescripcion();
-                    String informacion = "Manten precionado para ver detalles";
-                    Toast.makeText(getActivity(), informacion, Toast.LENGTH_SHORT).show();
-                }
-            });
+
             listViewForo.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent i = new Intent(getActivity(),ForoTopicActivity.class);
-                    i.putExtra("Autor",listaForo.get(position).getAutor());
-                    i.putExtra("Titulo",listaForo.get(position).getTitulo());
-                    i.putExtra("Descripcion",listaForo.get(position).getDescripcion());
-                    i.putExtra("Plataforma",listaForo.get(position).getLenguaje());
-                    i.putExtra("Id",listaForo.get(position).getId());
-                    startActivity(i);
+
+                    opciones(view, position);
                     return false;
                 }
             });
@@ -181,6 +172,46 @@ public class ForoPrincipalFragment extends Fragment {
             Toast.makeText(getActivity(), "Error we", Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void opciones(final View view, final int position) {
+
+        final CharSequence[] opciones={"Ver Detalles","Eliminar registro"};
+        final AlertDialog.Builder alertOpciones=new AlertDialog.Builder(view.getContext());
+        alertOpciones.setTitle("Seleccione una Opción");
+        alertOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (opciones[i].equals("Ver Detalles")){
+                    Toast.makeText(view.getContext(), "Ver detalles", Toast.LENGTH_SHORT).show();
+                    Intent in = new Intent(view.getContext(),ForoTopicActivity.class);
+                    in.putExtra("Autor",listaForo.get(position).getAutor());
+                    in.putExtra("Titulo",listaForo.get(position).getTitulo());
+                    in.putExtra("Descripcion",listaForo.get(position).getDescripcion());
+                    in.putExtra("Plataforma",listaForo.get(position).getLenguaje());
+                    in.putExtra("Id",listaForo.get(position).getId());
+                    startActivity(in);
+                }else{
+                    if (opciones[i].equals("Eliminar registro")){
+                        EliminarRegistro(position,view);
+                    }else{
+                        dialogInterface.dismiss();}
+                }
+
+            }
+        });
+        alertOpciones.show();
+
+    }
+
+    private void EliminarRegistro(int position,View view) {
+        try {
+        SQLiteDatabase db = conn.getWritableDatabase();
+        String[] parametros = {listaForo.get(position).getFecha()};
+        db.delete(UtilidadesForo.TABLA_FORO,UtilidadesForo.CAMPO_FECHA+"=?",parametros);
+        Toast.makeText(view.getContext(), "Registro eliminado", Toast.LENGTH_SHORT).show();}
+        catch (Exception e){}
+    }
+
     private void obtenerLista() {
         listaInformacion = new ArrayList<String>();
         for (int i=0;i<listaForo.size();i++){

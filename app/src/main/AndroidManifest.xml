@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -53,7 +54,9 @@
             android:label="Configuraciones"
             android:theme="@style/Theme.AppCompat" />
         <activity android:name=".MensajesActivity" />
-        <activity android:name=".UploadActivity" />
+        <activity android:name=".UploadActivity"
+            android:label="Adjuntar archivo"
+            android:theme="@style/Theme.AppCompat"/>
 
 
         <activity
@@ -75,7 +78,9 @@
         <activity android:name=".MessageActivity"></activity>
 
         <activity android:name=".NewPerfilActivity"></activity>
-        <activity android:name=".ForoTopicActivity"></activity>
+        <activity android:name=".ForoTopicActivity"
+            android:label="Comentarios"
+            android:theme="@style/Theme.AppCompat"></activity>
     </application>
 
 </manifest>

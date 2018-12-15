@@ -69,7 +69,7 @@ public class CirculosActivity extends AppCompatActivity implements
         listViewCirculos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String informacion = "id: "+listCirculos.get(position).getId()+"\n";
+                String informacion = "";
                 informacion+="Nombre: "+listCirculos.get(position).getNombrecirculo()+"\n";
                 informacion+="Categoria: "+listCirculos.get(position).getCategoria() + "\n";
                 informacion+= "Descripcion" + listCirculos.get(position).getDescrip();

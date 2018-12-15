@@ -111,8 +111,9 @@ public class MisCirculosFragment extends Fragment {
             listViewMisCirculos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    String informacion = "id: "+ listaMisCirculos.get(position).getId()+"\n";
+                    String informacion = "";//"id: "+ listaMisCirculos.get(position).getId()+"\n";
                     informacion+="Titulo: "+ listaMisCirculos.get(position).getNombrecirculo()+"\n";
+                    informacion+="Autor: "+ listaMisCirculos.get(position).getUser()+"\n";
                     informacion+="Descripcion: "+ listaMisCirculos.get(position).getDescrip();
                     Toast.makeText(getActivity(), informacion, Toast.LENGTH_SHORT).show();
                 }

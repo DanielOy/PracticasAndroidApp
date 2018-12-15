@@ -16,12 +16,17 @@
     <ImageView
         android:id="@+id/ibtnUser"
         style="@style/Widget.AppCompat.ImageButton"
-        android:layout_width="139dp"
-        android:layout_height="114dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:background="@color/trasparente"
         android:drawingCacheQuality="high"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:minWidth="100dp"
+        android:minHeight="100dp"
         android:onClick="perfil"
-        android:src="@drawable/logo1" />
+        android:scaleType="fitXY"
+        android:src="@drawable/icono222" />
 
     <TextView
         android:layout_width="match_parent"

@@ -20,7 +20,9 @@ import com.example.danny.apprepositorio.entidades.Foro;
 import com.example.danny.apprepositorio.utilidades.UtilidadesAportaciones;
 import com.example.danny.apprepositorio.utilidades.UtilidadesForo;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 /**
@@ -129,7 +131,14 @@ public class ForoAportacionesFragment extends Fragment {
     private void obtenerLista() {
         listaInformacion = new ArrayList<String>();
         for (int i = 0; i< listaAportaciones.size(); i++){
-            listaInformacion.add(listaAportaciones.get(i).getFecha() +" - "+
+            Date date= new Date();
+           try {
+               String str  = (listaAportaciones.get(i).getFecha());
+               SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+               date = dateFormat.parse(str);
+           }catch (Exception ex){}
+
+            listaInformacion.add( date.toString()+" - "+
                     listaAportaciones.get(i).getDescripcion());
         }
     }
